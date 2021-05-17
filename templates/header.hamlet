@@ -1,0 +1,10 @@
+<header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <img class="masthead-avatar mb-5" src="/static/img/dog.png" alt="..." />
+                <h1 class="masthead-heading text-uppercase mb-0">Petshow
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line">
+                    <div class="divider-custom-icon">
+                    <div class="divider-custom-line">
+                <p class="masthead-subheading font-weight-light mb-0">O seu pet bem tratado!
+
