@@ -28,9 +28,9 @@ getHomeR = do
         $(whamletFile "templates/navbar.hamlet")
         $(whamletFile "templates/header.hamlet")
         $(whamletFile "templates/portfolio.hamlet")
+        
 
 
-    
-    
+
         --javascript estático
         addScript $ (StaticR js_scripts_js) 

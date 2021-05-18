@@ -1,6 +1,6 @@
 <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
-                <img class="masthead-avatar mb-5" src="/static/img/dog.png" alt="..." />
+                <img class="masthead-avatar mb-5" src="/static/img/dog-fundo.png" alt="..." />
                 <h1 class="masthead-heading text-uppercase mb-0">Petshow
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line">
