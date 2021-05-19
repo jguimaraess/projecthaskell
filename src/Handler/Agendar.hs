@@ -20,10 +20,14 @@ getAgendarR = do
         -- estatico
         addStylesheet (StaticR css_bootstrap_css)
         addStylesheet (StaticR css_styles_css)
+        setTitle "Agendar Pet" 
         -- dinamico
         --corpo html
         $(whamletFile "templates/scripts.hamlet")
         $(whamletFile "templates/navbar.hamlet")
+        $(whamletFile "templates/login.hamlet")
+        $(whamletFile "templates/footer.hamlet")
+        $(whamletFile "templates/copyright.hamlet")
     
         --javascript estático
         addScript $ (StaticR js_scripts_js) 

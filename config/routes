@@ -4,4 +4,9 @@
 /robots.txt RobotsR GET
 
 /                                              HomeR GET
-/agendar                                       AgendarR              GET
+/Agendar                                       AgendarR              GET
+/CadastrarCliente                              CadastrarR            GET
+/Login                                         EntrarR               GET
+/CadastrarPet                                  PetR                  GET
+
+
