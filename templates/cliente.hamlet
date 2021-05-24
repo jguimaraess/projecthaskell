@@ -9,7 +9,18 @@
                                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contatos
                                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{CadastrarR}>Cadastrar
                                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{EntrarR}>Entrar
-                                    
-                        
 
+<h2 align="center" style="margin-top:120px">Formulário de Cadastro
+
+<div class="container" style="margin-top:20px; top: 10px; left: 18px; width: 900px;">
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="background-color:black;">Formulário de Cadastro
+            <div class="panel-body">
+                <div class="container" style="margin-top:10px;
+                    $maybe mensa <- msg
+                        ^{mensa} 
+                        <form method=post action=@{ClienteR}>
+                            ^{widget}
+                            <input type="submit" value="Cadastrar">
+                            <input href="/clientes" type="button" onclick="location.href='/clientes';" value="Voltar">
 

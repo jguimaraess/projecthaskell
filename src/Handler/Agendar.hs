@@ -18,12 +18,17 @@ getAgendarR :: Handler Html
 getAgendarR = do
     defaultLayout $ do 
         -- estatico
+        addScriptRemote "https://code.jquery.com/jquery-3.6.0.js"
+        addScriptRemote "http://code.jquery.com/jquery-3.6.0.min.js"
+        addScriptRemote "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+        addStylesheetRemote "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+
         addStylesheet (StaticR css_bootstrap_css)
         addStylesheet (StaticR css_styles_css)
         setTitle "Agendar Pet" 
         -- dinamico
         --corpo html
-        $(whamletFile "templates/scripts.hamlet")
         $(whamletFile "templates/navbar.hamlet")
         $(whamletFile "templates/login.hamlet")
         $(whamletFile "templates/footer.hamlet")
@@ -31,3 +36,4 @@ getAgendarR = do
     
         --javascript estático
         addScript $ (StaticR js_scripts_js) 
+

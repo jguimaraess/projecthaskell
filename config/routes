@@ -3,10 +3,13 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/                                              HomeR GET
+/                                              HomeR                 GET
 /Agendar                                       AgendarR              GET
 /CadastrarCliente                              CadastrarR            GET
 /Login                                         EntrarR               GET
-/CadastrarPet                                  PetR                  GET
+/cliente                                       ClienteR              GET POST
+/cliente/perfil/#ClienteId                     PerfilR               GET
+/clientes                                      ListarCliR            GET
+/cliente/#ClienteId                            ApagarCliR            POST
 
 

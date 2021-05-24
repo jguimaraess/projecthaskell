@@ -9,7 +9,16 @@
                                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contatos
                                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{CadastrarR}>Cadastrar
                                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{EntrarR}>Entrar
-                                    
-                        
 
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+                <h4 class="font-weight-bold py-3 mb-4">
+                Informações do Cliente
 
+                <div class="card overflow-hidden">
+                <div class="row no-gutters row-bordered row-border-light">
+                    <div class="col-md-3 pt-0">
+                    <div class="list-group list-group-flush account-settings-links">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">Dados Pessoais
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Meus Agendamentos
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Meus Pets
