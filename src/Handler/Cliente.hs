@@ -33,6 +33,7 @@ getClienteR = do
         addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
         addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/8.5.22/mmenu.js"
         addStylesheetRemote "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        addStylesheetRemote "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 
         addStylesheet (StaticR css_bootstrap_css)
         addStylesheet (StaticR css_styles_css)
@@ -41,6 +42,7 @@ getClienteR = do
         $(whamletFile "templates/cliente.hamlet")
         $(whamletFile "templates/footer.hamlet")
         $(whamletFile "templates/copyright.hamlet")
+
 
 postClienteR :: Handler Html
 postClienteR = do
@@ -89,6 +91,7 @@ getListarCliR = do
                 addScriptRemote "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
                 addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
                 addStylesheetRemote "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+                addStylesheetRemote "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 
                 -- tables
                 addStylesheetRemote "https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"
@@ -104,6 +107,10 @@ getListarCliR = do
 postApagarCliR :: ClienteId -> Handler Html
 postApagarCliR cid = do
     runDB $ delete cid
+    defaultLayout $ do
+            $(whamletFile "templates/deletarCliente.hamlet")
+            $(whamletFile "templates/footer.hamlet")
+            $(whamletFile "templates/copyright.hamlet")
     redirect ListarCliR
 
 dadosPetR :: Handler Html
