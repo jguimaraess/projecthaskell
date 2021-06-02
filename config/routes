@@ -5,11 +5,24 @@
 
 /                                              HomeR                 GET
 /Agendar                                       AgendarR              GET
-/CadastrarCliente                              CadastrarR            GET
-/Login                                         EntrarR               GET
-/cliente                                       ClienteR              GET POST
-/cliente/perfil/#ClienteId                     PerfilR               GET
+
+/cliente                                       ClienteR              GET POST 
+
+/pet                                           PetR                  GET POST
+/pet/editarPet/#PetId                          EditarPetR            GET POST
+
+/usuario                                       UsuarioR              GET POST
+/login                                         AuthR                 GET POST
+/logout                                        SairR                 POST
+--> ADMIN -->
+
+/admin                                         AdminR               GET
+
 /clientes                                      ListarCliR            GET
 /cliente/#ClienteId                            ApagarCliR            POST
+/pets                                          ListarPetR            GET
+/pet/#PetId                                    ApagarPetR            POST
+
+
 
 

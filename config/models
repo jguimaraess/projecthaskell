@@ -8,3 +8,17 @@ Cliente
     UniqueEmailIx   email
     UniqueCpfx      cpf
     deriving Show
+
+Usuario
+    email Text
+    senha Text
+    UniqueEmail email
+    deriving Show
+
+Pet
+    nome    Text
+    raca    Text
+    idade   Int
+    porte   Text
+    deriving Show
+

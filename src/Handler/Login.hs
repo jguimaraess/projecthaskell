@@ -7,48 +7,86 @@
 module Handler.Login where
 
 import Import
-import Text.Lucius
-import Text.Julius
-import Database.Persist.Postgresql
+import Handler.Auxiliar
 
+formLogin :: Form (Text, Text)
+formLogin = renderBootstrap $ (,)
+        <$> areq emailField "Email: " Nothing
+        <*> areq passwordField "Senha de Usuário: "  Nothing
 
--- O ideal eh ter apenas chamadas a templates.
--- css_bootstrap_css => css/bootstrap.css
-getCadastrarR :: Handler Html
-getCadastrarR = do
-    defaultLayout $ do 
-        -- estatico
+autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Cliente))
+autenticar email senha = runDB $ selectFirst [ClienteEmail ==. email
+                                             ,ClienteSenha ==. senha] []
+
+getAuthR :: Handler Html
+getAuthR = do
+    (widget,_) <- generateFormPost formLogin
+    msg <- getMessage
+    defaultLayout $ do
+        addStylesheetRemote "http://remote-bootstrap-path.css"
+        addScriptRemote "https://code.jquery.com/jquery-3.6.0.js"
+        addScriptRemote "http://code.jquery.com/jquery-3.6.0.min.js"
+        addScriptRemote "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+        addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/8.5.22/mmenu.js"
+        addStylesheetRemote "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        addStylesheetRemote "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+
         addStylesheet (StaticR css_bootstrap_css)
         addStylesheet (StaticR css_styles_css)
-        setTitle "Cadastrar Cliente"
-        -- dinamico
-        --corpo html
-        $(whamletFile "templates/navbar.hamlet")
-        $(whamletFile "templates/login.hamlet")
+        addStylesheet (StaticR css_profile_css)
+        setTitle "Login de Usuário"
+        (formWidget widget msg AuthR "Entrar")
         $(whamletFile "templates/footer.hamlet")
         $(whamletFile "templates/copyright.hamlet")
-        --javascript estático
-        addScript $ (StaticR js_scripts_js) 
 
-getEntrarR :: Handler Html
-getEntrarR = do
-    defaultLayout $ do 
-        -- estatico
+
+postAuthR :: Handler Html
+postAuthR = do
+    ((result,_),_) <- runFormPost formLogin
+    case result of
+        FormSuccess ("root@root.com", "root") -> do
+            setSession "_ID" "admin"
+            redirect AdminR
+        FormSuccess (email,senha) -> do
+            clienteExiste <- autenticar email senha
+            case clienteExiste of
+                Nothing -> do
+                    setMessage [shamlet|
+                        <span class="label label-warning">
+                            Usuário ou senha inválidos
+                    |]
+                    redirect AuthR
+                Just (Entity _ cliente) -> do
+                    if senha == clienteSenha cliente then do
+                        setSession "_ID" (clienteEmail cliente)
+                        redirect HomeR
+                    else do
+                        setMessage [shamlet|
+                        <span class="label label-danger">
+                            Usuário e/ou Senha estão incorretos!
+                        |]
+                    redirect AuthR
+        _ -> redirect HomeR
+
+postSairR :: Handler Html
+postSairR = do
+    deleteSession "_ID"
+    redirect HomeR
+
+getAdminR :: Handler Html
+getAdminR = do 
+    defaultLayout $ do
         addScriptRemote "https://code.jquery.com/jquery-3.6.0.js"
         addScriptRemote "http://code.jquery.com/jquery-3.6.0.min.js"
         addScriptRemote "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
         addStylesheetRemote "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-
+        
         addStylesheet (StaticR css_bootstrap_css)
         addStylesheet (StaticR css_styles_css)
-        setTitle "Login"
-        -- dinamico
-        --corpo html
-        $(whamletFile "templates/navbar.hamlet")
-        $(whamletFile "templates/login.hamlet")
+        addStylesheet (StaticR css_profile_css)
+        setTitle "Administrador"
+        $(whamletFile "templates/admin.hamlet")
         $(whamletFile "templates/footer.hamlet")
         $(whamletFile "templates/copyright.hamlet")
-        --javascript estático
-        addScript $ (StaticR js_scripts_js) 
-

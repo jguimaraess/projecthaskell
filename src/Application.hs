@@ -40,6 +40,7 @@ import Handler.Common
 import Handler.Home
 import Handler.Agendar
 import Handler.Cliente
+import Handler.Usuario
 import Handler.Login
 import Handler.Pet
 

@@ -24,6 +24,7 @@ getHomeR = do
         addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
         addStylesheetRemote "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 
+        usuario <- lookupSession "_ID"
         addStylesheet (StaticR css_bootstrap_css)
         addStylesheet (StaticR css_styles_css)
         setTitle "Petshow! Seu pet bem cuidado" 
