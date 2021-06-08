@@ -9,12 +9,11 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contatos
 
                     $maybe email <- usuario
-                    
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarCliR}>Clientes
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" 
                         <form action=@{SairR} method=post> 
-                            #{email}: <input type="submit" value="Sair"> 
-                    
+                            #{email}: <input type="submit" value="Sair">
+
                     $nothing
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{UsuarioR}>Cadastrar
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{AuthR}>Entrar
@@ -22,32 +21,35 @@
 <h2 align="center" style="margin-top:30px">
 <div class="container" style="margin-top:20px; top: 10px; left: 18px; width: 1350px;">
     <div class="panel panel-primary">
-        <div class="panel-heading" style="background-color:black;">Lista de Pets
+        <div class="panel-heading" style="background-color:black;">Agenda
         <div class="panel-body">
                             <div class="table-responsive">
                                     <table class="table align-items-center">
                                         <thead>
                                             <tr>
-                                                <th>Nome
-                                                <th>Raça
-                                                <th>Idade
-                                                <th>Porte
-                                                <th>
+                                                <th>Serviço
+                                                <th>Cliente
+                                                <th>Pet
+                                                <th>Dia
+                                                <th>Hora
                                                 <th>
                                             <tbody>
-                                                $forall Entity pid pet <- pets
+                                                $forall (Entity _ pet, Entity _ agendar, Entity _ _) <- tudo
                                                     <tr>
                                                         <td>
-                                                            #{petNome pet}
+                                                            
                                                         <td>
-                                                            #{petRaca pet}
+                                                            
                                                         <td>
-                                                            #{petIdade pet}
+                                                            
                                                         <td>
-                                                            #{petPorte pet}
+                                                            
                                                         <td>
-                                                            <a href=@{EditarPetR pid} role="button" class="btn btn-success fa fa-edit">
+                                                            
                                                         <td>
-                                                            <form method=post action=@{ApagarPetR pid}>
-                                                                <button type="submit" class="btn btn-danger fa fa-trash">
+                                                           
+
+
+
+                                                            
                                                     

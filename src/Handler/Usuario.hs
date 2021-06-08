@@ -21,6 +21,7 @@ formLogin = renderBootstrap $ (,)
 
 getUsuarioR :: Handler Html
 getUsuarioR = do
+    usuario <- lookupSession "_ID"
     (widget,_) <- generateFormPost formLogin
     msg <- getMessage
     defaultLayout $ do
@@ -47,17 +48,26 @@ postUsuarioR = do
     ((result,_),_) <- runFormPost formLogin
     case result of
         FormSuccess (usuario@(Usuario email senha), conf) -> do
-            if senha == conf then do 
-                runDB $ insert usuario
-                setMessage [shamlet|
-                    <span class="label label-success">
-                            Usuário criado com sucesso!
-                |]
-                redirect UsuarioR
-            else do
-                setMessage [shamlet|
-                    <span class="label label-warning">
-                        Senhas não conferem!
-                |]
-                redirect UsuarioR
+            usuarioExiste <- runDB $ getBy (UniqueEmail email)
+            case usuarioExiste of
+                Just _ -> do
+                    setMessage [shamlet|
+                        <span class="label label-warning">
+                                E-mail já cadastrado!
+                    |]
+                    redirect UsuarioR
+                Nothing -> do
+                    if senha == conf then do
+                        runDB $ insert usuario
+                        setMessage [shamlet|
+                            <span class="label label-success">
+                                Usuário cadastrado com sucesso!
+                        |]
+                        redirect UsuarioR
+                    else do
+                        setMessage [shamlet|
+                            <span class="label label-warning">
+                                Senhas não conferem!
+                        |]
+                        redirect UsuarioR
         _ -> redirect HomeR

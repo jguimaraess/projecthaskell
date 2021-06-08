@@ -14,9 +14,9 @@ formLogin = renderBootstrap $ (,)
         <$> areq emailField "Email: " Nothing
         <*> areq passwordField "Senha de Usuário: "  Nothing
 
-autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Cliente))
-autenticar email senha = runDB $ selectFirst [ClienteEmail ==. email
-                                             ,ClienteSenha ==. senha] []
+autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Usuario))
+autenticar email senha = runDB $ selectFirst [UsuarioEmail ==. email
+                                             ,UsuarioSenha ==. senha] []
 
 getAuthR :: Handler Html
 getAuthR = do
@@ -49,17 +49,17 @@ postAuthR = do
             setSession "_ID" "admin"
             redirect AdminR
         FormSuccess (email,senha) -> do
-            clienteExiste <- autenticar email senha
-            case clienteExiste of
+            usuarioExiste <- autenticar email senha
+            case usuarioExiste of
                 Nothing -> do
                     setMessage [shamlet|
                         <span class="label label-warning">
                             Usuário ou senha inválidos
                     |]
                     redirect AuthR
-                Just (Entity _ cliente) -> do
-                    if senha == clienteSenha cliente then do
-                        setSession "_ID" (clienteEmail cliente)
+                Just (Entity _ usuario) -> do
+                    if senha == usuarioSenha usuario then do
+                        setSession "_ID" (usuarioEmail usuario)
                         redirect HomeR
                     else do
                         setMessage [shamlet|
@@ -77,6 +77,7 @@ postSairR = do
 getAdminR :: Handler Html
 getAdminR = do 
     defaultLayout $ do
+        usuario <- lookupSession "_ID"
         addScriptRemote "https://code.jquery.com/jquery-3.6.0.js"
         addScriptRemote "http://code.jquery.com/jquery-3.6.0.min.js"
         addScriptRemote "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"

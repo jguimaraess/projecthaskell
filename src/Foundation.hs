@@ -27,13 +27,14 @@ instance Yesod App where
     makeLogger = return . appLogger
 
     authRoute _ = Just AuthR
+    authRoute _ = Just UsuarioR
 
     isAuthorized HomeR _ = return Authorized
     isAuthorized (StaticR _) _ = return Authorized
     isAuthorized AuthR _ = return Authorized
-    isAuthorized ClienteR _ = return Authorized
+    isAuthorized UsuarioR _ = return Authorized
     isAuthorized AdminR _ = isAdmin
-    isAuthorized _ _ = isCliente
+    isAuthorized _ _ = isUsuario
 
 isAdmin :: Handler AuthResult
 isAdmin = do
@@ -43,8 +44,8 @@ isAdmin = do
         Just "admin" -> return Authorized
         Just _ -> return (Unauthorized "Você não tem permissão para acessar")
 
-isCliente :: Handler AuthResult
-isCliente = do
+isUsuario :: Handler AuthResult
+isUsuario = do
     sess <- lookupSession "_ID"
     case sess of
         Nothing -> return AuthenticationRequired

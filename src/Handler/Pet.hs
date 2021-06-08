@@ -18,6 +18,7 @@ formPet mp = renderBootstrap $ Pet
 
 getPetR :: Handler Html
 getPetR = do
+    usuario <- lookupSession "_ID"
     (widget,_) <- generateFormPost (formPet Nothing)
     msg <- getMessage
     defaultLayout $ do
@@ -53,6 +54,7 @@ postPetR = do
 
 getListarPetR :: Handler Html
 getListarPetR = do
+    usuario <- lookupSession "_ID"
     pets <- runDB $ selectList [] [Asc PetNome]
     defaultLayout $ do
                 addStylesheetRemote "http://remote-bootstrap-path.css"
@@ -72,8 +74,8 @@ getListarPetR = do
                 $(whamletFile "templates/copyright.hamlet")
 
 postApagarPetR :: PetId -> Handler Html
-postApagarPetR cid = do
-    runDB $ delete cid
+postApagarPetR pid = do
+    runDB $ delete pid
     defaultLayout $ do
             setMessage [shamlet|
                 <span class="label label-success">
@@ -84,8 +86,8 @@ postApagarPetR cid = do
             $(whamletFile "templates/copyright.hamlet")
 
 getEditarPetR :: PetId -> Handler Html
-getEditarPetR cid = do
-    pet <- runDB $ get404 cid
+getEditarPetR pid = do
+    pet <- runDB $ get404 pid
     (widget,_) <- generateFormPost (formPet (Just pet))
     msg <- getMessage
     defaultLayout $ do
@@ -102,16 +104,16 @@ getEditarPetR cid = do
         addStylesheet (StaticR css_styles_css)
         addStylesheet (StaticR css_profile_css)
         setTitle "Edição de Informações do Pet"
-        (formWidget widget msg (EditarPetR cid) "Editar")
+        (formWidget widget msg (EditarPetR pid) "Editar")
         $(whamletFile "templates/footer.hamlet")
         $(whamletFile "templates/copyright.hamlet")
 
 postEditarPetR :: PetId -> Handler Html
-postEditarPetR cid = do
-    _ <- runDB $ get404 cid
+postEditarPetR pid = do
+    _ <- runDB $ get404 pid
     ((result,_),_) <- runFormPost (formPet Nothing)
     case result of
         FormSuccess novoPet -> do
-            runDB $ replace cid novoPet
+            runDB $ replace pid novoPet
             redirect ListarPetR
         _ -> redirect HomeR

@@ -4,19 +4,23 @@
 /robots.txt RobotsR GET
 
 /                                              HomeR                 GET
-/Agendar                                       AgendarR              GET
 
-/cliente                                       ClienteR              GET POST 
+/cliente                                       ClienteR              GET POST
+/cliente/editar/#ClienteId                     EditarCliR            GET POST
+/cliente/perfil/#ClienteId                     PerfilCliR            GET
 
 /pet                                           PetR                  GET POST
 /pet/editarPet/#PetId                          EditarPetR            GET POST
+
+/agendar                                       AgendarR              GET POST
+
 
 /usuario                                       UsuarioR              GET POST
 /login                                         AuthR                 GET POST
 /logout                                        SairR                 POST
 --> ADMIN -->
 
-/admin                                         AdminR               GET
+/admin                                         AdminR                GET
 
 /clientes                                      ListarCliR            GET
 /cliente/#ClienteId                            ApagarCliR            POST

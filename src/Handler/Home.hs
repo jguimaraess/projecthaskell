@@ -11,7 +11,6 @@ import Text.Lucius
 import Text.Julius
 import Database.Persist.Postgresql
 
-
 -- O ideal eh ter apenas chamadas a templates.
 -- css_bootstrap_css => css/bootstrap.css
 getHomeR :: Handler Html

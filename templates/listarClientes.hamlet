@@ -1,15 +1,19 @@
-<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-sm bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
         <img src="/static/img/dog.png">
             <a class="navbar-brand js-scroll-trigger" href=@{HomeR}>Petshow
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{AgendarR}>Agendar
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Sobre nós
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contatos
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarCliR}>Clientes
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" 
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ClienteR}>Cadastrar
+                        <li class="nav-item mx-0 mx-sm-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{AgendarR}>Agendar
+                        <li class="nav-item mx-0 mx-sm-2"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Sobre nós
+                        <li class="nav-item mx-0 mx-sm-3"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contatos
+                    $maybe email <- usuario
+                        <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarCliR}>Clientes
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                        <form action=@{SairR} method=post> 
+                            #{email}: <input type="submit" value="Sair"> 
+                    $nothing
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{UsuarioR}>Cadastrar
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{AuthR}>Entrar
 
 <h2 align="center" style="margin-top:30px">
@@ -42,7 +46,7 @@
                                                         <td>
                                                             #{clienteTelefone cliente}
                                                         <td>
-                                                            <a role="button" class="btn btn-success fa fa-edit">
+                                                            <a href=@{EditarCliR cid} role="button" class="btn btn-success fa fa-edit">
                                                         <td>
                                                             <form method=post action=@{ApagarCliR cid}>
                                                                 <button type="submit" class="btn btn-danger fa fa-trash">

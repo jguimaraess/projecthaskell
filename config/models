@@ -4,7 +4,6 @@ Cliente
     cpf             Int
     endereco        Text
     telefone        Int
-    senha           Text
     UniqueEmailIx   email
     UniqueCpfx      cpf
     deriving Show
@@ -22,3 +21,12 @@ Pet
     porte   Text
     deriving Show
 
+Agendar
+    servico Text
+    cliid   ClienteId
+    petid   PetId
+    dia     Day
+    hora    Text
+    deriving Show
+
+    
