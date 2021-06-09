@@ -96,6 +96,7 @@ postApagarServR :: ServicoId -> Handler Html
 postApagarServR sid = do
     runDB $ delete sid
     defaultLayout $ do
+        addStylesheet (StaticR css_styles_css)
         setMessage [shamlet|
         <span class="label label-success">
             Serviço deletado com sucesso!

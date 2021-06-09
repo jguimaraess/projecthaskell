@@ -7,7 +7,7 @@
 
 /cliente                                       ClienteR              GET POST
 /cliente/editar/#ClienteId                     EditarCliR            GET POST
-/cliente/perfil/#ClienteId                     PerfilCliR            GET
+/clientes/perfil/#ClienteId                    PerfilCliR            GET
 /clientes                                      ListarCliR            GET
 /cliente/#ClienteId                            ApagarCliR            POST
 

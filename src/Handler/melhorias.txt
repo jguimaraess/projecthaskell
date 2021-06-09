@@ -1,9 +1,0 @@
--- OQUE FALTA --
-
-- Perfil do Cliente - arrumar ou excluir do projeto
-
-- melhoras as rotas e autenticações
-
-- colocar campo de dono de pet na listagem dos PETS
-
-- deploy no heroku

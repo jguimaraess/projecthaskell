@@ -63,7 +63,6 @@ getPerfilCliR cid = do
                 addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
                 addStylesheetRemote "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         
-                addStylesheet (StaticR css_bootstrap_css)
                 addStylesheet (StaticR css_styles_css)
                 addStylesheet (StaticR css_profile_css)
                 setTitle "Perfil Cliente"
@@ -73,24 +72,31 @@ getPerfilCliR cid = do
 
 getListarCliR :: Handler Html
 getListarCliR = do
-    usuario <- lookupSession "_ID"
     clientes <- runDB $ selectList [] [Asc ClienteNome]
     defaultLayout $ do
-                addScriptRemote "http://code.jquery.com/jquery-3.6.0.min.js"
-                addStylesheetRemote "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-                addStylesheet (StaticR css_styles_css)
-                $(whamletFile "templates/listarClientes.hamlet")
-                $(whamletFile "templates/footer.hamlet")
-                $(whamletFile "templates/copyright.hamlet")
-                
+        usuario <- lookupSession "_ID"
+        addScriptRemote "http://code.jquery.com/jquery-3.6.0.min.js"
+        addStylesheetRemote "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        addStylesheet (StaticR css_styles_css)
+        $(whamletFile "templates/listarClientes.hamlet")
+        $(whamletFile "templates/footer.hamlet")
+        $(whamletFile "templates/copyright.hamlet")
 
 postApagarCliR :: ClienteId -> Handler Html
 postApagarCliR cid = do
     runDB $ delete cid
     defaultLayout $ do
+        usuario <- lookupSession "_ID"
+        addStylesheet (StaticR css_styles_css)
         $(whamletFile "templates/deletarCliente.hamlet")
+        setMessage [shamlet|
+        <span class="label label-success">
+            Cliente deletado com sucesso!
+            |]
+        redirect ListarCliR
         $(whamletFile "templates/footer.hamlet")
         $(whamletFile "templates/copyright.hamlet")
+        
 
 getEditarCliR :: ClienteId -> Handler Html
 getEditarCliR cid = do

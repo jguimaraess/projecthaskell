@@ -27,7 +27,7 @@ petCB = do
 
 formAgendar :: Form Agendar
 formAgendar = renderBootstrap $ Agendar
-    <$> areq intField "Ordem: " Nothing
+    <$> areq intField "Número OS: " Nothing
     <*> areq (selectField servicoCB) "Serviço: " Nothing
     <*> areq (selectField clienteCB) "Cliente: " Nothing
     <*> areq (selectField petCB) "Pet: " Nothing

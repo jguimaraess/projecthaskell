@@ -5,8 +5,6 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mx-0 mx-sm-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{AgendarR}>Agendar
-                        <li class="nav-item mx-0 mx-sm-2"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Sobre nós
-                        <li class="nav-item mx-0 mx-sm-3"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contatos
                     $maybe email <- usuario
                         <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarServicosR}>Serviços
                         <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarCliR}>Clientes
@@ -55,46 +53,6 @@
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white">
                             <img class="img-fluid" src="/static/img/portfolio/sleepingcat.png" alt="...">
-
-<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times">
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal1Label">Banho e Tosa
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line">
-                                        <div class="divider-custom-icon"><i class="fas fa-star">
-                                        <div class="divider-custom-line">
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/dogshower.png" alt="...">
-                                    <p class="mb-5">Serviço de Banho e Tosa - Incluso escovação dos dentinhos do seu pet, serviço de "manicure" e bons tratos ao animal.
-                                    <a href=@{AgendarR}> role="button" class="btn btn-success">
-                                        <i class="fas fa-times fa-fw">
-                                        Agendar
-
-<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-labelledby="portfolioModal3Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times">
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal3Label">Serviço de Estadia do Pet!
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line">
-                                        <div class="divider-custom-icon"><i class="fas fa-star">
-                                        <div class="divider-custom-line">
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/sleepingcat.png" alt="...">
-                                    <p class="mb-5">Serviço de Estadia do Pet - Indicados para os donos de PET que viajam bastante e não sabem onde deixar o seu PET, o seu problema está resolvido! Deixe o seu PET com a PETSHOW e não se preocupe. Agenda agora mesmo o horário de estadia do seu PET!
-                                    <a href=@{AgendarR}> role="button" class="btn btn-success">
-                                        <i class="fas fa-times fa-fw">
-                                        Agendar      
 
 
                         

@@ -1,26 +1,26 @@
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
         <img src="/static/img/dog.png">
-            <a class="navbar-brand js-scroll-trigger" href=@{HomeR}>Petshow
+            <a class="navbar-brand" href=@{HomeR}>Petshow
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{AgendarR}>Agendar
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Sobre nós
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contatos             
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarCliR}>Clientes
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" 
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{UsuarioR}>Cadastrar
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{AuthR}>Entrar
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3" href=@{AgendarR}>Agendar
 
-<header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center flex-column">
-                <h4 class="font-weight-bold py-3 mb-4">
-                Informações do Cliente #{clienteNome cliente}
+                    $maybe email <- usuario
+                        <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3" href=@{ListarServicosR}>Serviços
+                        <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3" href=@{ListarCliR}>Clientes
+                        <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3" href=@{ListarPetR}>Pets
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3"
+                        <form action=@{SairR} method=post> 
+                            #{email}: <input type="submit" value="Sair"> 
+                    $nothing
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3" href=@{UsuarioR}>Cadastrar
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3" href=@{AuthR}>Entrar
 
-                <div class="card overflow-hidden">
-                <div class="row no-gutters row-bordered row-border-light">
-                    <div class="col-md-3 pt-0">
-                    <div class="list-group list-group-flush account-settings-links">
-                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="">Dados Pessoais
-                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Meus Agendamentos
-                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Meus Pets
+<div class="container d-flex align-items-center flex-column" style="margin-top:200px; top: 10px; left: 18px; width: 1350px;">
+        <h3 class="font-weight-bold py-3 mb-3">
+            Informações do Cliente #{clienteNome cliente}
+            <div class="card overflow-hidden">
+                    <div class="list-group">
+                        <a href=@{EditarCliR cid} class="list-group-item">Dados Pessoais
+                        <a href=@{ListarAgendaR cid} class="list-group-item">Meus Agendamentos
