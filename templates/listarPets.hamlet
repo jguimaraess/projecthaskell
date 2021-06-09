@@ -10,7 +10,7 @@
                     $maybe email <- usuario
                         <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarServicosR}>Serviços
                         <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarCliR}>Clientes
-                        <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarServicosR}>Serviços
+                        <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarPetR}>Pets
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                         <form action=@{SairR} method=post> 
                             #{email}: <input type="submit" value="Sair"> 

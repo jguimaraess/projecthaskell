@@ -37,6 +37,7 @@
                                                 <th>Telefone
                                                 <th>
                                                 <th>
+                                                <th>
                                             <tbody>
                                                 $forall Entity cid cliente <- clientes
                                                     <tr>
@@ -52,6 +53,8 @@
                                                             #{clienteTelefone cliente}
                                                         <td>
                                                             <a href=@{EditarCliR cid} role="button" class="btn btn-success fa fa-edit">
+                                                        <td>
+                                                            <a href=@{ListarAgendaR cid} role="button" class="btn btn-warning fa fa-list-alt">
                                                         <td>
                                                             <form method=post action=@{ApagarCliR cid}>
                                                                 <button type="submit" class="btn btn-danger fa fa-trash">

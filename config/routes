@@ -24,6 +24,9 @@
 
 /agendar                                       AgendarR              GET POST
 
+/agenda/#ClienteId                             ListarAgendaR         GET
+
+
 
 /usuario                                       UsuarioR              GET POST
 /login                                         AuthR                 GET POST

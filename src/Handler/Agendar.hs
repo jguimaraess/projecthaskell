@@ -67,20 +67,21 @@ postAgendarR = do
 
 getListarAgendaR :: ClienteId -> Handler Html
 getListarAgendaR cid = do
-    let sql = "SELECT ??,??,?? FROM agendar \
-        \ INNER JOIN servico ON servico.id = agendar.servid\
-        \ INNER JOIN cliente ON cliente.id = agendar.cliid \
-        \ INNER JOIN pet ON pet.id = agendar.petid \
-        \ WHERE cliente.id = ?"
+    let sql = "SELECT ??,??,??,??,?? FROM agendar \
+            \ INNER JOIN servico ON servico.id = agendar.servid \
+            \ INNER JOIN cliente ON cliente.id = agendar.cliid \
+            \ INNER JOIN pet ON pet.id = agendar.petid \
+            \ WHERE cliente.id = ?"
     cliente <- runDB $ get404 cid
     agenda <- runDB $ rawSql sql [toPersistValue cid] :: Handler [(Entity Agendar, Entity Servico, Entity Cliente, Entity Pet, Entity Agendar)]
     defaultLayout $ do
         usuario <- lookupSession "_ID"
-        addStylesheet (StaticR css_bootstrap_css)
         addStylesheet (StaticR css_styles_css)
         $(whamletFile "templates/listarAgenda.hamlet")
         $(whamletFile "templates/footer.hamlet")
         $(whamletFile "templates/copyright.hamlet")
+        
+        
 
 
 

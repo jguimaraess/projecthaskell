@@ -81,6 +81,7 @@ getListarCliR = do
                 addStylesheet (StaticR css_styles_css)
                 $(whamletFile "templates/listarClientes.hamlet")
                 $(whamletFile "templates/footer.hamlet")
+                $(whamletFile "templates/copyright.hamlet")
                 
 
 postApagarCliR :: ClienteId -> Handler Html

@@ -61,9 +61,9 @@ postPetR = do
 
 getListarPetR :: Handler Html
 getListarPetR = do
-    usuario <- lookupSession "_ID"
     pets <- runDB $ selectList [] [Asc PetNome]
     defaultLayout $ do
+                usuario <- lookupSession "_ID"
                 addScriptRemote "http://code.jquery.com/jquery-3.6.0.min.js"
                 addStylesheetRemote "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
                 addStylesheet (StaticR css_styles_css)

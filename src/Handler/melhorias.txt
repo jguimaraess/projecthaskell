@@ -6,6 +6,4 @@
 
 - colocar campo de dono de pet na listagem dos PETS
 
-- melhorar o layout
-
 - deploy no heroku

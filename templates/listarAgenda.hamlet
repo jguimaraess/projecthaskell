@@ -10,7 +10,7 @@
                     $maybe email <- usuario
                         <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarServicosR}>Serviços
                         <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarCliR}>Clientes
-                        <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarServicosR}>Serviços
+                        <li class="nav-item mx-0 mx-sm-4"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{ListarPetR}>Pets
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                         <form action=@{SairR} method=post> 
                             #{email}: <input type="submit" value="Sair"> 
@@ -19,12 +19,12 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{AuthR}>Entrar
 
 <div class="container" style="margin-top:200px; top: 10px; left: 18px; width: 1350px;">
-    <a href=@{AgendarR} class="btn btn-success text-align: right" role="button">Agendar
+    <a href=@{AgendarR} class="btn btn-success text-align: right" role="button">Agendar Serviço
     <div class="panel panel-primary">
-        <h2>Agenda do Petshow
+        <h2>Agenda de #{clienteNome cliente}
         <div class="panel-body">
                     <div class="table-responsive">
-                                    <table class="table align-items-center">
+                                <table class="table align-items-center">
                                         <thead>
                                             <tr>
                                                 <th>Ordem de Serviço
