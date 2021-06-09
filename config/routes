@@ -8,9 +8,19 @@
 /cliente                                       ClienteR              GET POST
 /cliente/editar/#ClienteId                     EditarCliR            GET POST
 /cliente/perfil/#ClienteId                     PerfilCliR            GET
+/clientes                                      ListarCliR            GET
+/cliente/#ClienteId                            ApagarCliR            POST
 
 /pet                                           PetR                  GET POST
 /pet/editarPet/#PetId                          EditarPetR            GET POST
+/pets                                          ListarPetR            GET
+/pet/#PetId                                    ApagarPetR            POST
+
+/serviço                                       ServicoR              GET POST
+/serviços                                      ListarServicosR       GET
+/serviço/editarServiço/#ServicoId              EditarServR           GET POST
+/serviço/#ServicoId                            ApagarServR           POST
+
 
 /agendar                                       AgendarR              GET POST
 
@@ -18,14 +28,11 @@
 /usuario                                       UsuarioR              GET POST
 /login                                         AuthR                 GET POST
 /logout                                        SairR                 POST
+
 --> ADMIN -->
 
 /admin                                         AdminR                GET
 
-/clientes                                      ListarCliR            GET
-/cliente/#ClienteId                            ApagarCliR            POST
-/pets                                          ListarPetR            GET
-/pet/#PetId                                    ApagarPetR            POST
 
 
 

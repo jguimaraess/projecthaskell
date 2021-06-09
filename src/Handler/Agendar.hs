@@ -10,6 +10,11 @@ import Import
 import Handler.Auxiliar
 import Database.Persist.Postgresql
 
+servicoCB = do
+    servicos <- runDB $ selectList [] [Asc ServicoNome]
+    optionsPairs $
+        map (\r -> (servicoNome $ entityVal r, entityKey r)) servicos
+
 clienteCB = do
     clientes <- runDB $ selectList [] [Asc ClienteNome]
     optionsPairs $
@@ -22,7 +27,8 @@ petCB = do
 
 formAgendar :: Form Agendar
 formAgendar = renderBootstrap $ Agendar
-    <$> areq textField "Serviço: " Nothing
+    <$> areq intField "Ordem: " Nothing
+    <*> areq (selectField servicoCB) "Serviço: " Nothing
     <*> areq (selectField clienteCB) "Cliente: " Nothing
     <*> areq (selectField petCB) "Pet: " Nothing
     <*> areq dayField "Dia: " Nothing
@@ -59,21 +65,22 @@ postAgendarR = do
             redirect AgendarR
         _ -> redirect HomeR
 
--- getListarAgendaR :: ClienteId -> Handler Html
--- getListarAgendaR cid = do
---     let sql = "SELECT * FROM agendar \
---             \ INNER JOIN pet ON agendar.petid = pet.id \
---             \ INNER JOIN cliente ON agendar.cliid = cliente.id \
---             \ WHERE cliente.id = ?"
---     cliente <- runDB $ get404 cid
---     tudo <- runDB $ rawSql sql [toPersistValue cid] :: Handler [(Entity Agendar, Entity Pet, Entity Cliente)]
---     defaultLayout $ do
---             usuario <- lookupSession "_ID"
---             addStylesheet (StaticR css_bootstrap_css)
---             addStylesheet (StaticR css_styles_css)
---             $(whamletFile "templates/listarAgenda.hamlet")
---             $(whamletFile "templates/footer.hamlet")
---             $(whamletFile "templates/copyright.hamlet")
+getListarAgendaR :: ClienteId -> Handler Html
+getListarAgendaR cid = do
+    let sql = "SELECT ??,??,?? FROM agendar \
+        \ INNER JOIN servico ON servico.id = agendar.servid\
+        \ INNER JOIN cliente ON cliente.id = agendar.cliid \
+        \ INNER JOIN pet ON pet.id = agendar.petid \
+        \ WHERE cliente.id = ?"
+    cliente <- runDB $ get404 cid
+    agenda <- runDB $ rawSql sql [toPersistValue cid] :: Handler [(Entity Agendar, Entity Servico, Entity Cliente, Entity Pet, Entity Agendar)]
+    defaultLayout $ do
+        usuario <- lookupSession "_ID"
+        addStylesheet (StaticR css_bootstrap_css)
+        addStylesheet (StaticR css_styles_css)
+        $(whamletFile "templates/listarAgenda.hamlet")
+        $(whamletFile "templates/footer.hamlet")
+        $(whamletFile "templates/copyright.hamlet")
 
 
 

@@ -16,13 +16,20 @@ Usuario
 
 Pet
     nome    Text
+    cliid   ClienteId
     raca    Text
     idade   Int
     porte   Text
     deriving Show
 
+Servico
+    nome    Text
+    preco   Int
+    deriving Show
+
 Agendar
-    servico Text
+    ordem   Int
+    servid  ServicoId
     cliid   ClienteId
     petid   PetId
     dia     Day

@@ -19,37 +19,28 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href=@{AuthR}>Entrar
 
 <div class="container" style="margin-top:200px; top: 10px; left: 18px; width: 1350px;">
-    <a href=@{PetR} class="btn btn-success text-align: right" role="button">Adicionar Pet
+    <a href=@{ServicoR} class="btn btn-success text-align: right" role="button">Adicionar Serviço
     <div class="panel panel-primary">
-        <h2>Lista de Pets
+        <h2>Lista de Serviços do Petshow
         <div class="panel-body">
                     <div class="table-responsive">
                                     <table class="table align-items-center">
                                         <thead>
                                             <tr>
-                                                <th>Nome
-                                                <th>Dono do Pet
-                                                <th>Raça
-                                                <th>Idade
-                                                <th>Porte
+                                                <th>Serviço
+                                                <th>Preço
                                                 <th>
                                                 <th>
                                             <tbody>
-                                                $forall Entity pid pet <- pets
+                                                $forall Entity sid servico <- servicos
                                                     <tr>
                                                         <td>
-                                                            #{petNome pet}
+                                                            #{servicoNome servico}
                                                         <td>
-                                                        
+                                                            #{servicoPreco servico}
                                                         <td>
-                                                            #{petRaca pet}
+                                                            <a href=@{EditarServR sid} role="button" class="btn btn-success fa fa-edit">
                                                         <td>
-                                                            #{petIdade pet}
-                                                        <td>
-                                                            #{petPorte pet}
-                                                        <td>
-                                                            <a href=@{EditarPetR pid} role="button" class="btn btn-success fa fa-edit">
-                                                        <td>
-                                                            <form method=post action=@{ApagarPetR pid}>
+                                                            <form method=post action=@{ApagarServR sid}>
                                                                 <button type="submit" class="btn btn-danger fa fa-trash">
                                                     
