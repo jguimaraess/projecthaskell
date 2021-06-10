@@ -7,7 +7,6 @@
 module Handler.Home where
 
 import Import
-import Yesod.Static
 import Text.Lucius
 import Text.Julius
 import Database.Persist.Postgresql
@@ -18,7 +17,6 @@ getHomeR :: Handler Html
 getHomeR = do
     defaultLayout $ do 
         -- estatico
-        staticFiles "static"
         addScriptRemote "https://code.jquery.com/jquery-3.6.0.js"
         addScriptRemote "http://code.jquery.com/jquery-3.6.0.min.js"
         addScriptRemote "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
